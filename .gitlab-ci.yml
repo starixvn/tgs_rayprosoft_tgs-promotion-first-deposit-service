@@ -28,7 +28,7 @@ unit-test:
 push-docker-image:
   extends: .push-docker-image-template
   script:
-    - push_docker "Tgs.Promotion.First.Deposit"
+    - push_docker "Tgs.Promotion.First.Deposit.Service"
 
 push-k8s-template:
   extends: .push-k8s-template
