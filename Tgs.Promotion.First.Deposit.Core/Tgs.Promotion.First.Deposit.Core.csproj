@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
+	<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <PackageReference Include="PhoenixToolkits.MessageQueue" Version="2.1.0" />
+    <PackageReference Include="Tgs.CalculateServiceClient" Version="0.0.1" />
+    <PackageReference Include="Tgs.Payment.Client" Version="0.6.1" />
+    <PackageReference Include="Tgs.PaymentService.Client" Version="0.8.4" />
+    <PackageReference Include="Tgs.Promotion.Client" Version="1.0.47" />
+    <PackageReference Include="TGS.ServiceUtility" Version="0.2.0" />
+  </ItemGroup>
+
+</Project>

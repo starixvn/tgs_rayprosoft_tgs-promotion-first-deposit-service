@@ -1,0 +1,6 @@
+@Tgs.Promotion.First.Deposit.Service_HostAddress = http://localhost:5087
+
+GET {{Tgs.Promotion.First.Deposit.Service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
