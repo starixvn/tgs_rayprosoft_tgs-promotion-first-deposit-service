@@ -7,6 +7,7 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <UserSecretsId>a72b8f96-7f89-4c4d-9171-daf2efb1fc61</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <ContainerRepository>pgtgs/promotion-first-deposit-service</ContainerRepository>
   </PropertyGroup>
 
   <ItemGroup>
