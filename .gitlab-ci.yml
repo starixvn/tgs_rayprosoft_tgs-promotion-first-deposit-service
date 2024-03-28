@@ -28,12 +28,10 @@ unit-test:
 push-docker-image:
   extends: .push-docker-image-template
   script:
-    - push_docker "Tgs.Promotion.First.Deposit" $ImageName $Tag
+    - push_docker "Tgs.Promotion.First.Deposit"
 
 push-k8s-template:
   extends: .push-k8s-template
-  script:
-    - push_k8s_template $HelmTemplateFolderName $ImageName $Tag
 
 deploy-dev:
   extends: .deploy-template
