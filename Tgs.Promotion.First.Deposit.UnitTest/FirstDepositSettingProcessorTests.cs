@@ -22,7 +22,7 @@ public class FirstDepositSettingProcessorTests
         };
 
         // Act
-        var actual = await sut.HandleAsync("test", request, null);
+        var actual = await sut.Handle("test", "test", null, request);
 
         // Assert
         Assert.NotNull(actual);

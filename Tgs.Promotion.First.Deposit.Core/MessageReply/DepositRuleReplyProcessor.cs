@@ -1,21 +1,21 @@
 ﻿using System.Text.Json;
 using Microsoft.Extensions.Logging;
+using NATS.Client.Core;
 using Tgs.Promotion.Clients.Protos;
-using Valhalla.MessageQueue;
+using TGS.Core.Infrastructures.Nats.Interface;
 
 namespace Tgs.Promotion.First.Deposit.Core.MessageReply;
 
 public class DepositRuleReplyProcessor(ILogger<DepositRuleReplyProcessor> logger)
-    : IMessageProcessor<CampaignDetailRequest, CampaignDetailResponse>
+    : IMessageReplyHandler<CampaignDetailRequest, CampaignDetailResponse>
 {
-    public ValueTask<CampaignDetailResponse> HandleAsync(
-        string subject,
-        CampaignDetailRequest data,
-        IEnumerable<MessageHeaderValue>? headerValues,
+    public Task<CampaignDetailResponse> Handle(
+        string subject, string? queueGroup, NatsHeaders? natsHeaders,
+        CampaignDetailRequest? message,
         CancellationToken cancellationToken = default)
     {
         var settings = JsonSerializer.Deserialize<DepositRewardSetting>(
-                           data.Settings,
+                           message.Settings,
                            PromotionUtility.SerializerOptions) ??
                        throw new NullReferenceException("Deserialize DepositRewardSetting is null");
 
@@ -36,6 +36,6 @@ public class DepositRuleReplyProcessor(ILogger<DepositRuleReplyProcessor> logger
             TurnoverMultiple = settings.TurnoverMultiple
         };
 
-        return new ValueTask<CampaignDetailResponse>(response);
+        return Task.FromResult(response);
     }
 }
