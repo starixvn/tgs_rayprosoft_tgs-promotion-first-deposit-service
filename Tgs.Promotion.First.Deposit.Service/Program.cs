@@ -1,15 +1,14 @@
 using FluentdForward.OpenTelemetry.MessagePack;
 using Microsoft.EntityFrameworkCore;
-using NATS.Client.Core;
 using NATS.Client.Serializers.Json;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using StackExchange.Redis;
+using Tgs.Payment.Protos;
 using Tgs.Promotion;
 using Tgs.Promotion.Clients.Protos;
 using Tgs.Promotion.First.Deposit.Core;
-using Tgs.Promotion.First.Deposit.Core.ApplicationServices;
 using Tgs.Promotion.First.Deposit.Core.DependencyInjection;
 using Tgs.Promotion.First.Deposit.Core.MessageReply;
 using Tgs.Promotion.First.Deposit.Repository.DependencyInjection;
@@ -95,7 +94,7 @@ builder.Services.AddNatsMessage(builder.Configuration.GetConnectionString("Nats"
         string.Format(PromotionDetailConst.DetailSubjectTemplate, "firstdeposit"),
         NatsJsonSerializerRegistry.Default.GetDeserializer<DistributedDetailRequest>(),
         NatsJsonSerializerRegistry.Default.GetSerializer<DistributedDetailResponse>())
-    .SubscribeRegister<DistributeFirstDepositBonusCommand>(
+    .SubscribeRegister<FormEventEx>(
         ProcessorTypes.DepositFormStatusChangedHandlerType,
         "tgs.payment.deposit.status_ex",
         "tgs.promotion.first-deposit.deposit");
