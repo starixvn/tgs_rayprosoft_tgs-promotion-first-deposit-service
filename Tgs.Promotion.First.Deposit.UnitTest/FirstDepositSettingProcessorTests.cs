@@ -25,6 +25,6 @@ public class FirstDepositSettingProcessorTests
         var actual = await sut.Handle("test", "test", null, request);
 
         // Assert
-        Assert.NotNull(actual);
+        Assert.That(actual, Is.Not.Null);
     }
 }
